@@ -19,6 +19,13 @@
   >
     {{title}}<span>{{btnTimerLocalText}}</span>
   </button>
+  <button
+    v-else
+    class="v-btn v-btn__classic"
+    :class="className"
+  >
+    {{title}}
+  </button>
 </template>
 
 <script>
@@ -28,6 +35,34 @@ export default {
     title: {
       type: String,
       default: 'Button'
+    },
+    primary: {
+      type: Boolean,
+      default: false
+    },
+    secondary: {
+      type: Boolean,
+      default: false
+    },
+    warning: {
+      type: Boolean,
+      default: false
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    },
+    info: {
+      type: Boolean,
+      default: false
+    },
+    danger: {
+      type: Boolean,
+      default: false
+    },
+    action: {
+      type: Boolean,
+      default: false
     },
     btnLink: {
       type: Boolean,
@@ -95,8 +130,17 @@ export default {
     timerFunc(this.btnTimerLocal)
   },
   computed: {
-  },
-  methods: {
+    className () {
+      return {
+        'v-btn__primary': this.primary,
+        'v-btn__secondary': this.secondary,
+        'v-btn__warning': this.warning,
+        'v-btn__disabled': this.disabled,
+        'v-btn__info': this.info,
+        'v-btn__danger': this.danger,
+        'v-btn__action': this.action
+      }
+    }
   }
 }
 </script>
@@ -185,6 +229,40 @@ export default {
         padding: 0 6px;
         border-radius: 8px 10px 8px 10px;
       }
+    }
+    &__classic{
+      border-radius: 18px 20px 18px 20px;
+      cursor: pointer;
+      line-height: 52px;
+      padding: 0 47px 0 48px;
+      @media screen and (max-width: 640px) {
+        padding: 0 30px;
+        font-size: 14px;
+        line-height: 42px;
+      }
+    }
+    &__primary{
+      background: #702C7E;
+    }
+    &__secondary{
+      background: #C4296C;
+    }
+    &__warning{
+      background: #F4BA46;
+    }
+    &__disabled{
+      background: #EFEFEF;
+      color: #767679;
+      pointer-events: none;
+    }
+    &__info{
+      background: #0083B6;
+    }
+    &__danger{
+      background: #DF3F3E;
+    }
+    &__action{
+      background: #ED732E;
     }
   }
 </style>

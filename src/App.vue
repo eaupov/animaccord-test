@@ -114,6 +114,36 @@
           </div>
         </div>
         <div class="col-lg-4">
+          <div class="wrap">
+            <v-btn
+              title="Отправить письмо"
+              :primary="true"
+            />
+            <v-btn
+              title="Отправить письмо"
+              :secondary="true"
+            />
+            <v-btn
+              title="Отправить письмо"
+              :warning="true"
+            />
+            <v-btn
+              title="Отправить письмо"
+              :disabled="true"
+            />
+            <v-btn
+              title="Отправить письмо"
+              :info="true"
+            />
+            <v-btn
+              title="Отправить письмо"
+              :danger="true"
+            />
+            <v-btn
+              title="Отправить письмо"
+              :action="true"
+            />
+          </div>
         </div>
       </div>
     </div>
