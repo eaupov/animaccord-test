@@ -13,6 +13,12 @@
     :class="[btnIco, {'v-btn__sizem': sizeM }, {'v-btn__sizes': sizeS }]"
   >
   </button>
+  <button
+    v-else-if="btnTimer > 0"
+    class="v-btn v-btn__classic v-btn__timer"
+  >
+    {{title}}<span>{{btnTimerLocalText}}</span>
+  </button>
 </template>
 
 <script>
@@ -43,11 +49,50 @@ export default {
       type: Boolean,
       default: false
     },
+    btnTimer: {
+      type: Number,
+      default: 0
+    }
   },
   data () {
-    return {}
+    return {
+      btnTimerLocal: this.btnTimer,
+      btnTimerLocalText: ''
+    }
   },
   mounted () {
+    let timerMin = 0
+    let timerSec = 60
+    const timerFunc = (count) => {
+      this.btnTimerLocal--
+      if (count) {
+        if (this.btnTimerLocal > 59) {
+          timerMin = Math.floor(this.btnTimerLocal / 60)
+          if (timerMin > 99) {
+            timerSec = (timerMin * 60) - 60
+            this.btnTimerLocalText = timerMin + ':' + timerSec
+          } else {
+            timerSec = this.btnTimerLocal - (60 * timerMin)
+            if (timerSec < 10) {
+              timerSec = '0' + timerSec
+            }
+            if (timerMin < 10) {
+              timerMin = '0' + timerMin
+            }
+            this.btnTimerLocalText = timerMin + ':' + timerSec
+          }
+        } else {
+          if (this.btnTimerLocal < 10) {
+            timerSec = '0' + this.btnTimerLocal
+          } else {
+            timerSec = this.btnTimerLocal
+          }
+          this.btnTimerLocalText = '00:' + timerSec
+        }
+        setTimeout(timerFunc, 1000, --count)
+      }
+    }
+    timerFunc(this.btnTimerLocal)
   },
   computed: {
   },
@@ -127,6 +172,18 @@ export default {
       &.ico__pencil{
         background-image: url('../assets/img/ico/pen.svg');
         background-color: #702C7E;
+      }
+    }
+    &__timer{
+      color: #767679;
+      padding: 0 46px;
+      span{
+        background: #DF3F3E;
+        line-height: 26px;
+        color: #fff;
+        margin-left: 6px;
+        padding: 0 6px;
+        border-radius: 8px 10px 8px 10px;
       }
     }
   }

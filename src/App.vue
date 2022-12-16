@@ -106,6 +106,12 @@
           </div>
         </div>
         <div class="col-lg-4">
+          <div class="wrap">
+            <v-btn
+              title="Повторное письмо"
+              :btnTimer=240
+            />
+          </div>
         </div>
         <div class="col-lg-4">
         </div>
