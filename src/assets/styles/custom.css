@@ -1,0 +1,26 @@
+body {
+    font-family: 'Phosphate Solid';
+    background: #1E1E1E;
+}
+
+.wrap {
+    -webkit-display: flex;
+    -moz-display: flex;
+    -ms-display: flex;
+    -o-display: flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    -o-flex-direction: column;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wrap .v-btn {
+    margin-bottom: 10px;
+}
+
+.wrap .v-btn__ico {
+    margin-right: 10px;
+}

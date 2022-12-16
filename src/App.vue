@@ -3,6 +3,23 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-2">
+          <div class="wrap">
+            <v-btn
+              :btnLink="true"
+              title="Напомнить PIN-код"
+              link="https://animaccord.com/"
+            />
+            <v-btn
+              :btnLink="true"
+              title="Напомнить PIN-код"
+              link="https://animaccord.com/"
+            />
+            <v-btn
+              :btnLink="true"
+              title="Напомнить PIN-код"
+              link="https://animaccord.com/"
+            />
+          </div>
         </div>
         <div class="col-lg-2">
         </div>
@@ -16,10 +33,12 @@
 </template>
 
 <script>
+import vBtn from './components/v-button'
+
 export default {
   name: 'App',
   components: {
-
+    vBtn
   }
 }
 </script>
